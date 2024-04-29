@@ -31,6 +31,7 @@ private:
     bool isCollision(vector<Pose> path);
     vector<DubinsPath> getNeighbors(Pose &p);
     vector<Pose> reconstructPath(Pose &p);
+    double obstacle_speed = .05;
 };
 
 

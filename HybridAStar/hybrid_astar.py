@@ -6,6 +6,7 @@ import matplotlib.patches as patch
 
 
 def main():
+    # time.sleep(5)
     """A debug script for the hybrid astar planner.
 
     This script will solve the hybrid astar problem in a
@@ -55,7 +56,6 @@ def main():
         return
     start = initial_conditions['start']
     end = initial_conditions['end']
-    obs = initial_conditions['obs']
     for i in range(sim_loop):
         print("Iteration: {}".format(i))
         x = result_x[0]

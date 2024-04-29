@@ -124,6 +124,5 @@ void MapInfo::moveObstaclesInXDirection(double x) {
                                               obstacle->bbox.second.x(),
                                               obstacle->bbox.second.y()});
 
-//        MapInfo::end[0] = max(obstacle->bbox.second.x(), obstacle->bbox.first.x()) + 50;
     }
 }
