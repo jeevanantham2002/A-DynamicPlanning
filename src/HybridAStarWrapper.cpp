@@ -1,7 +1,7 @@
 #include "include/HybridAStar.h"
 #include "include/py_cpp_struct.h"
 
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include <vector>
 
 using namespace Eigen;

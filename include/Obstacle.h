@@ -1,7 +1,7 @@
 #ifndef HYBRID_ASTAR_PLANNER_OBSTACLE_H
 #define HYBRID_ASTAR_PLANNER_OBSTACLE_H
 
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 
 class Obstacle {
 public:

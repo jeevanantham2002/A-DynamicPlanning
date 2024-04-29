@@ -14,7 +14,7 @@ struct HybridAStarPoint
     double g, h, f;
     Pose camefrom;
     vector<Pose> path;
-    inline bool operator < (const HybridAStarPoint& p) {
+    inline bool operator < (const HybridAStarPoint& p) const {
         return f > p.f;
     }
 };

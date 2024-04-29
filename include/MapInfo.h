@@ -6,7 +6,7 @@
 #include "Obstacle.h"
 #include "utils.h"
 
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include <vector>
 
 using namespace std;

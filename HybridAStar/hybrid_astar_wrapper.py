@@ -14,7 +14,7 @@ except:
         HybridAStarReturnValues, MAX_PATH_LENGTH
 
 try:
-    cdll = CDLL("build/libHybridAStar.so")
+    cdll = CDLL("build/libHybridAStar.dylib")
 except:
     cdll = CDLL("{}/dependencies/hybrid_astar_planner/"
                 "build/libHybridAStar.so".format(os.getenv("PYLOT_HOME")))
