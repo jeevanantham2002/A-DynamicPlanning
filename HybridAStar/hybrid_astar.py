@@ -16,7 +16,7 @@ def main():
     sim_loop = 1000
     area = 20.0  # animation area length [m]
     show_animation = True
-    obstacle_speed_per_iteration = .2
+    obstacle_speed_per_iteration = .15
 
     obstacle_list = np.array([[26.0, 10.0, 34.0, 17.0]])
     number_of_obstacles = len(obstacle_list)
@@ -62,8 +62,7 @@ def main():
                                                     hyperparameters)
         if not success:
             print("FAILED")
-            ## Modify so that we try to take a path that is way ahead of our end goal then
-            ## Todo
+            end = np.array([end[0] + 5.0, end[1], end[2]])
             continue
 
         print(best_path)
@@ -79,6 +78,7 @@ def main():
 
     end_time = time.time() - start_time
     print("Time taken: {}s".format(end_time))
+    true_end = end
     print(best_path)
 
     for i in range(len(best_path)):
@@ -110,7 +110,7 @@ def main():
                                        top_right_y - bottom_left_y)
                 ax.add_patch(rect)
 
-            plt.plot(start[0], start[1], "og")
+            plt.plot(true_start[0], true_start[1], "og")
             plt.plot(end[0], end[1], "or")
 
             plt.plot(x, y, "vc")
