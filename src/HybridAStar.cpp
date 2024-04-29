@@ -96,6 +96,7 @@ vector<Pose> HybridAStar::runHybridAStar() {
     int count = 0;
     while (!openlist.empty() && count < hastar_hp->max_iterations) {
         count += 1;
+        map_info->moveObstaclesInXDirection(0);
         // get the lowest total cost node and add it to close list
         pop_heap(openlist.begin(), openlist.end());
         HybridAStarPoint x = openlist.back();

@@ -20,6 +20,9 @@ MapInfo::MapInfo(HybridAStarInitialConditions *hastar_ic_,
 
 MapInfo::~MapInfo()
 {
+
+    obstacle_path.clear();
+
     for (auto obstacle : obstacles) {
         delete obstacle;
     }
@@ -107,4 +110,18 @@ bool MapInfo::isOutOfBounds(Vector2f p) {
 // Get the map area
 double MapInfo::getMapArea() {
     return bounds[0] * bounds[1];
+}
+
+// Move Obstacle in the X Direction
+void MapInfo::moveObstaclesInXDirection(double x) {
+    for (auto obstacle : obstacles) {
+        obstacle->bbox.first.x() += x;
+        obstacle->bbox.second.x() += x;
+
+        // Push lx, ly, rx, ry
+        obstacle_path.push_back(vector<double>{obstacle->bbox.first.x(),
+                                              obstacle->bbox.first.y(),
+                                              obstacle->bbox.second.x(),
+                                              obstacle->bbox.second.y()});
+    }
 }

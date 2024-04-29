@@ -70,14 +70,18 @@ def apply_hybrid_astar(initial_conditions, hyperparameters):
     success = hastar_rv.success
     x_path = np.array([hastar_rv.x_path[i] for i in range(MAX_PATH_LENGTH)])
     y_path = np.array([hastar_rv.y_path[i] for i in range(MAX_PATH_LENGTH)])
-    yaw_path = np.array(
-        [hastar_rv.yaw_path[i] for i in range(MAX_PATH_LENGTH)])
+    yaw_path = np.array([hastar_rv.yaw_path[i] for i in range(MAX_PATH_LENGTH)])
+    obstacle_path = np.array([hastar_rv.obstacle_path[i] for i in range(MAX_PATH_LENGTH)])
 
     ind = -1
     if success and np.any(np.isnan(x_path)):
         ind = np.where(np.isnan(x_path))[0][0]
 
-    return x_path[:ind], y_path[:ind], yaw_path[:ind], success
+    indexOfNanObstaclePath = -1
+    if success and np.any(np.isnan(obstacle_path)):
+        indexOfNanObstaclePath = np.where(np.isnan(obstacle_path))[0][0]
+
+    return x_path[:ind], y_path[:ind], yaw_path[:ind], obstacle_path[:indexOfNanObstaclePath], success
 
 
 def to_hastar_initial_conditions(initial_conditions):

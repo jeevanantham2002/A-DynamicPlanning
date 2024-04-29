@@ -1,6 +1,6 @@
 #ifndef HYBRID_ASTAR_PLANNER_PY_CPP_STRUCT_H
 #define HYBRID_ASTAR_PLANNER_PY_CPP_STRUCT_H
-const int MAX_PATH_LENGTH = 100;
+const int MAX_PATH_LENGTH = 10000;
 
 struct HybridAStarInitialConditions {
     double x_start;
@@ -21,6 +21,7 @@ struct HybridAStarReturnValues {
     double x_path[MAX_PATH_LENGTH];
     double y_path[MAX_PATH_LENGTH];
     double yaw_path[MAX_PATH_LENGTH];
+    double obstacle_Path[MAX_PATH_LENGTH];
 };
 
 struct HybridAStarHyperparameters {

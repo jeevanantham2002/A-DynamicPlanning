@@ -26,6 +26,8 @@ public:
     vector<Point> getCarOutline();
     bool isCollision(vector<Point> car_outline);
     double getMapArea();
+    void moveObstaclesInXDirection(double x);
+    vector<vector<double>> obstacle_path;   // 2-D array of obstacle path everytime moved TODO: modify for multiple obstacles
 private:
     Car car;
     vector<Obstacle *> obstacles;

@@ -25,6 +25,14 @@ extern "C" {
         hastar_rv->y_path[index] = NAN;
         hastar_rv->yaw_path[index] = NAN;
 
+        index = 0;
+        for (int i=0; i<map_info->obstacle_path.size(); i++) {
+            for (int j=0; j<map_info->obstacle_path[0].size(); j++) {
+                hastar_rv->obstacle_Path[index++] = map_info->obstacle_path[i][j];
+            }
+        }
+        hastar_rv->obstacle_Path[index] = NAN;
+
         // Only map_info contains pointers that need to be freed
         delete map_info;
         hastar_rv->success = !path.empty();

@@ -16,13 +16,13 @@ def main():
     sim_loop = 100
     area = 20.0  # animation area length [m]
     show_animation = True
+    num_of_obstacles = 1
 
     initial_conditions = {
         'start': np.array([10, 15, 0]),
         'end': np.array([50, 15, 0]),
         'obs': np.array([
             [26.0, 10.0, 34.0, 17.0],
-            [26.0, 21.0, 34.0, 28.0],
         ]),
     }  # paste output from debug log
 
@@ -41,9 +41,12 @@ def main():
         "car_width": 1.8,
     }
     start_time = time.time()
-    result_x, result_y, result_yaw, success = \
+    result_x, result_y, result_yaw, obstacle_path, success = \
         hybrid_astar_wrapper.apply_hybrid_astar(initial_conditions,
                                                 hyperparameters)
+
+    print(obstacle_path)
+
     end_time = time.time() - start_time
     print("Time taken: {}s".format(end_time))
     print(success)
@@ -72,11 +75,21 @@ def main():
                 lambda event: [exit(0) if event.key == 'escape' else None]
             )
             ax = plt.gca()
-            for o in obs:
-                rect = patch.Rectangle((o[0], o[1]),
-                                       o[2] - o[0],
-                                       o[3] - o[1])
+            # for o in obs:
+            #     rect = patch.Rectangle((o[0], o[1]),
+            #                            o[2] - o[0],
+            #                            o[3] - o[1])
+            #     ax.add_patch(rect)
+            for j in range(num_of_obstacles):
+                bottom_left_x = obstacle_path[(i * 4) + (j * 4) + 0]
+                bottom_left_y = obstacle_path[(i * 4) + (j * 4) + 1]
+                top_right_x = obstacle_path[(i * 4) + (j * 4) + 2]
+                top_right_y = obstacle_path[(i * 4) + (j * 4) + 3]
+                rect = patch.Rectangle((bottom_left_x, bottom_left_y),
+                                       top_right_x - bottom_left_x,
+                                       top_right_y - bottom_left_y)
                 ax.add_patch(rect)
+
             plt.plot(start[0], start[1], "og")
             plt.plot(end[0], end[1], "or")
             if success:

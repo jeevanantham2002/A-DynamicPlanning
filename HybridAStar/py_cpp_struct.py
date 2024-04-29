@@ -2,7 +2,7 @@ from ctypes import c_double, c_int, POINTER, Structure, CDLL
 
 _c_double_p = POINTER(c_double)
 
-MAX_PATH_LENGTH = 100
+MAX_PATH_LENGTH = 10000
 
 class HybridAStarInitialConditions(Structure):
     _fields_ = [
@@ -24,7 +24,8 @@ class HybridAStarReturnValues(Structure):
         ("success", c_int),
         ("x_path", c_double * MAX_PATH_LENGTH),
         ("y_path", c_double * MAX_PATH_LENGTH),
-        ("yaw_path", c_double * MAX_PATH_LENGTH)
+        ("yaw_path", c_double * MAX_PATH_LENGTH),
+        ("obstacle_path", c_double * MAX_PATH_LENGTH)
     ]
 
 class HybridAStarHyperparameters(Structure):
