@@ -14,7 +14,7 @@ def main():
     path is not found.
     """
     print(__file__ + " start!!")
-    sim_loop = 100
+    sim_loop = 10000
     area = 20.0  # animation area length [m]
     show_animation = True
     num_of_obstacles = 1
@@ -41,6 +41,7 @@ def main():
         "car_length": 4.8,
         "car_width": 1.8,
     }
+
     start_time = time.time()
     result_x, result_y, result_yaw, obstacle_path, success = \
         hybrid_astar_wrapper.apply_hybrid_astar(initial_conditions,

@@ -124,5 +124,12 @@ void MapInfo::moveObstaclesInXDirection(double x) {
                                               obstacle->bbox.second.x(),
                                               obstacle->bbox.second.y()});
 
+        obstacle->next_path.clear();
+        for (int i = 0; i<obstacle->next_path_count; i++) {
+            obstacle->next_path.push_back(vector<double>{obstacle->bbox.first.x() + x*i,
+                                                         obstacle->bbox.first.y(),
+                                                         obstacle->bbox.second.x() + x*i,
+                                                         obstacle->bbox.second.y()});
+        }
     }
 }
